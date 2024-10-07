@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Image Viewer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    
+    <!-- Add these lines for the custom icon -->
+    <link rel="icon" type="image/jpeg" href="{{ url_for('static', filename='assets/logo.jpg') }}">
+    <link rel="apple-touch-icon" href="{{ url_for('static', filename='assets/logo.jpg') }}">
+</head>
+<body>
+    <div class="image-viewer">
+        <input type="file" id="imageInput" accept="image/*">
+        <div id="imageContainer">
+            <img id="displayedImage" src="" alt="Uploaded image">
+            <canvas id="measurementCanvas"></canvas>
+        </div>
+        <div class="controls">
+            <button id="rotateLeft">⟲</button>
+            <button id="rotateRight">⟳</button>
+            <button id="resetButton">Reset</button>
+        </div>
+        <div id="measurements"></div>
+        <div id="helpText">Double-click on the image to pick points and measure distances. Use the mouse wheel to zoom and drag to pan.</div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
