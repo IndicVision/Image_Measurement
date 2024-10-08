@@ -54,8 +54,6 @@ const view = (() => {
 
 const imageInput = document.getElementById('imageInput');
 const displayedImage = document.getElementById('displayedImage');
-const rotateLeft = document.getElementById('rotateLeft');
-const rotateRight = document.getElementById('rotateRight');
 const resetButton = document.getElementById('resetButton');
 const imageContainer = document.getElementById('imageContainer');
 const canvas = document.getElementById('measurementCanvas');
@@ -113,6 +111,7 @@ imageContainer.addEventListener("wheel", mouseWheelEvent, {passive: false});
 
 function resetTransformations() {
     view.scale = 1;
+    rotation = 0;
     view.setPosition(0, 0);
     view.applyTo(displayedImage);
     pointPairs = [];
@@ -316,16 +315,6 @@ function calculateDistance(point1, point2) {
     const pixelDistance = Math.sqrt(dx * dx + dy * dy);
     return pixelDistance / pixelsPerCm;
 }
-
-rotateLeft.addEventListener('click', () => {
-    rotation -= 90;
-    updateTransform();
-});
-
-rotateRight.addEventListener('click', () => {
-    rotation += 90;
-    updateTransform();
-});
 
 resetButton.addEventListener('click', resetTransformations);
 
