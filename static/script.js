@@ -263,27 +263,33 @@ function sendImageToServer(file) {
             if (data.success) {
                 pixelsPerMm = data.pixels_per_mm;
                 updateScaling(data);
+                
+                // Load the image and set dimensions
+                const img = new Image();
+                img.onload = function() {
+                    imageWidth = img.naturalWidth;
+                    imageHeight = img.naturalHeight;
+                    displayedImage.src = img.src;
+                    resetTransformations();
+                    
+                    // Adjust canvas size to match the image container
+                    canvas.width = imageContainer.clientWidth;
+                    canvas.height = imageContainer.clientHeight;
+                };
+                img.src = event.target.result;
             } else {
-                console.error('Error processing image:', data.error);
+                // Show error message to user
+                alert('No ArUco markers detected. Please upload a valid image with ArUco markers.');
+                // Clear the file input
+                imageInput.value = '';
             }
         })
         .catch(error => {
             console.error('Error:', error);
+            alert('An error occurred while processing the image. Please try again.');
+            // Clear the file input
+            imageInput.value = '';
         });
-
-        // Load the image and set dimensions
-        const img = new Image();
-        img.onload = function() {
-            imageWidth = img.naturalWidth;
-            imageHeight = img.naturalHeight;
-            displayedImage.src = img.src;
-            resetTransformations();
-            
-            // Adjust canvas size to match the image container
-            canvas.width = imageContainer.clientWidth;
-            canvas.height = imageContainer.clientHeight;
-        };
-        img.src = event.target.result;
     };
     reader.readAsDataURL(file);
 }

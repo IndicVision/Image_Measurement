@@ -51,6 +51,10 @@ def process_image():
 
     image_data = request.json['image'].split(',')[1]  # Remove the "data:image/png;base64," part
     result = detect_aruco_and_calculate_scale(image_data)
+    
+    if not result['success']:
+        return jsonify({'success': False, 'error': 'No ArUco markers detected'}), 400
+    
     return jsonify(result)
 
 @app.route('/favicon.ico')
