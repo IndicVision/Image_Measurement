@@ -316,6 +316,10 @@ function calculateDistance(point1, point2) {
     return pixelDistance / pixelsPerCm;
 }
 
+document.getElementById('uploadButton').addEventListener('click', function() {
+    document.getElementById('imageInput').click(); // Trigger the hidden file input
+});
+
 resetButton.addEventListener('click', resetTransformations);
 
 // Point selection and measurement

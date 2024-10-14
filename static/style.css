@@ -21,16 +21,55 @@
     z-index: 2; /* Ensure the canvas is above the image */
     pointer-events: none; /* This allows clicks to pass through to the image */
 }
+
 .controls {
     margin-top: 10px;
     display: flex;
-    flex-direction: column; /* Arrange elements vertically */
+    flex-direction: row; /* Arrange elements vertically */
     align-items: flex-start; /* Align them to the left */
+    gap: 10px;
 }
 
-#imageInput,
+#uploadButton {
+    padding: 10px 20px; /* Padding for the button */
+    background-color: #28a745; /* Green background */
+    color: white; /* White text */
+    border: none; /* Remove default borders */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 14px;
+    transition: background-color 0.3s ease; /* Smooth transition */
+    margin-bottom: 10px; /* Space below the button */
+}
+
+#uploadButton:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+
+#uploadButton:focus {
+    outline: none; /* Remove focus outline */
+    box-shadow: 0 0 0 4px rgba(40, 167, 69, 0.25); /* Add focus ring */
+}
+
 #resetButton {
-    margin-bottom: 10px; /* Add space between the input and button */
+    padding: 10px 20px; /* Padding for the button */
+    background-color: #888b89; /* Green background */
+    color: white; /* White text */
+    border: none; /* Remove default borders */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 14px;
+    transition: background-color 0.3s ease; /* Smooth transition */
+    margin-bottom: 10px; /* Space below the button */
+}
+
+#resetButton:hover {
+    background-color: #7b7c7c; /* Darker green on hover */
+}
+
+#resetButton:focus {
+    outline: none; /* Remove focus outline */
+    box-shadow: 0 0 0 4px rgba(40, 167, 69, 0.25); /* Add focus ring */
 }
 
 #helpText {
